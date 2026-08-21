@@ -15,10 +15,6 @@ class Solution(object):
                 ans[j] = True
 
         return ans
-
-
-        
-
         """
         :type candies: List[int]
         :type extraCandies: int
