@@ -1,0 +1,10 @@
+'''Four pillar of OOP:
+1. Abstraction
+2. Polymorphism
+3. Inheritance
+4. Encapsulation'''
+
+#__ before name is used to make a variable private
+@property
+def marks(self):
+    marks=100
