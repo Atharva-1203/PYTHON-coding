@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+        
 class Solution(object):
     def __init__(self):
         self.ans=[]
@@ -23,4 +24,5 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[int]
         """
+
         
