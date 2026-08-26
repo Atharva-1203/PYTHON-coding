@@ -5,18 +5,17 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
-    def pre(self, root, ret):
+    def inorder(self, root, ret):
         if root is None:
             return
+        self.inorder(root.left, ret)
         ret.append(root.val)
-        self.pre(root.left, ret)
-        self.pre(root.right,ret)
-        
-    def preorderTraversal(self, root):
-        ans=[]
-        self.pre(root,ans)
-        return ans
+        self.inorder(root.right, ret)
 
+    def inorderTraversal(self, root):
+        ans=[]
+        self.inorder(root, ans)
+        return ans
 
         """
         :type root: Optional[TreeNode]
