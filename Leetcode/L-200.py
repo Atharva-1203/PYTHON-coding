@@ -1,27 +1,49 @@
-from collections import defaultdict
-
 class Solution(object):
     def numIslands(self, grid):
-        graph=defaultdict(list)
-        for u in range(len(grid)):
-            for v in range(len(grid[u])):
-                if(grid[u][v]==1):
-                    graph[u].append(v)
 
-        def dfs(graphs,node,visited):
+        m = len(grid)
+        n = len(grid[0])
+
+        visited = [[False] * n for _ in range(m)]
+
+        def dfs(row, col):
+
+            visited[row][col] = True
+
+            directions = [
+                (-1, 0),
+                (1, 0),
+                (0, -1),
+                (0, 1)
+            ]
+
+            for dr, dc in directions:
+
+                r = row + dr
+                c = col + dc
+
+                if (0 <= r < m and
+                    0 <= c < n and
+                    grid[r][c] == "1" and
+                    not visited[r][c]):
+
+                    dfs(r, c)
+
+        count = 0
+
+        for i in range(m):
+            for j in range(n):
+
+                if grid[i][j] == "1" and not visited[i][j]:
+
+                    count += 1
+                    dfs(i, j)
+
+        return count
             
-            visited.add(node)
-
-            for neigh in graphs[node]:
-                if node not in visited:
-                    dfs(graphs,neigh)
-            count=0
-            for n in graphs:
-                if n not in visited:
-                    count=count+1
-                    dfs(graphs,n)
-            return count
-
-        x=set()
-        return dfs(graph,0,x)
-
+            
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        
